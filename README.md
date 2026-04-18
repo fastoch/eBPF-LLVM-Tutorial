@@ -4,7 +4,9 @@
 
 # Introduction 
 
-This is a development tutorial for eBPF based on CO-RE (Compile Once, Run Everywhere) 
+This is a development tutorial for eBPF based on CO-RE (Compile Once, Run Everywhere). 
+
+It provides practical eBPF implementation examples from beginner to advanced, and real-world applications.
 
 # Use Cases
 
