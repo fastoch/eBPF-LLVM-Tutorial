@@ -10,7 +10,10 @@ This is a development tutorial for eBPF based on CO-RE (Compile Once, Run Everyw
 
 It provides practical eBPF implementation examples from beginner to advanced, and real-world applications.  
 
-Instead of BCC, we'll use frameworks like libbpf, Cilium, libbpf-rs, and eunomia-bpf for development, with examples in languages such as C, Go, and Rust.  
+Rather than focusing on traditional tools like BCC, we'll use modern frameworks like libbpf, Cilium, libbpf-rs, and eunomia-bpf for development, with examples in languages such as C, Go, and Rust.  
+
+>[!note]
+>BCC (BPF Compiler Collection) is a set of tools leveraging eBPF for kernel tracing.
 
 # What is eBPF?
 
@@ -31,7 +34,7 @@ The kernel then typically JIT‑compiles the program to native machine code, giv
 >[!note]
 >JIT-compiling (Just‑In‑Time compilation) is a technique where code is compiled into machine instructions while the program is running, rather than before it starts.
 
-# Why does it matter for DevOps?
+# Why does eBPF matter for DevOps?
 
 eBPF is increasingly important for DevOps (and SRE/platform‑engineering) roles, especially in cloud‑native and Kubernetes environments.  
 
@@ -40,6 +43,10 @@ eBPF powers many modern tools you’ll touch daily: **Cilium** (Kubernetes netwo
 It gives you deep, low‑overhead visibility into networking, syscalls, and system‑level performance, which is crucial for debugging latency, packet drops, or I/O bottlenecks without having to implement instrumentation inside the app.  
 
 As a DevOps engineer, you don’t necessarily need to write raw eBPF C programs, but understanding how eBPF‑powered tools work (Cilium, Falco, etc.) is becoming a real differentiator in production‑grade Kubernetes and Linux‑centric environments.
+
+# 0. Introduction to core concepts and tools
+
+
 
 # Use Cases
 
