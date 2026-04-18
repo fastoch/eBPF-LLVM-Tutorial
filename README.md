@@ -29,7 +29,17 @@ Before running, each eBPF program is checked by a kernel‑space verifier that e
 The kernel then typically JIT‑compiles the program to native machine code, giving near‑native performance while still remaining safe.  
 
 >[!note]
->JIT-compiling (Just‑In‑Time compilation) is a technique where code is compiled into machine instructions while the program is running, rather than before it starts.  
+>JIT-compiling (Just‑In‑Time compilation) is a technique where code is compiled into machine instructions while the program is running, rather than before it starts.
+
+# Why does it matter for DevOps?
+
+eBPF is increasingly important for DevOps (and SRE/platform‑engineering) roles, especially in cloud‑native and Kubernetes environments.  
+
+eBPF powers many modern tools you’ll touch daily: **Cilium** (Kubernetes networking/Service Mesh), **Falco** (runtime security), and various observability agents that collect metrics without changing application code.  
+
+It gives you deep, low‑overhead visibility into networking, syscalls, and system‑level performance, which is crucial for debugging latency, packet drops, or I/O bottlenecks without having to implement instrumentation inside the app.  
+
+As a DevOps engineer, you don’t necessarily need to write raw eBPF C programs, but understanding how eBPF‑powered tools work (Cilium, Falco, etc.) is becoming a real differentiator in production‑grade Kubernetes and Linux‑centric environments.
 
 # Use Cases
 
