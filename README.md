@@ -19,7 +19,7 @@ Rather than focusing on traditional tools like BCC, we'll use modern frameworks 
 
 eBPF (extended Berkeley Packet Filter) is a Linux-kernel technology that lets you run small sandboxed programs directly inside the kernel without modifying the kernel source code or loading kernel modules.
 
-eBPF programs are triggered by events such as system calls, network packets, or tracepoints.  
+eBPF programs are triggered by events such as system calls, network packets, or tracepoints. 
 
 They can inspect, filter, or even modify kernel behavior (for example, changing how packets are routed, or logging which system calls a process makes).  
 
@@ -79,17 +79,50 @@ In the eBPF workflow, it performs three critical roles:
 
 ### 1. The Front-End (Clang)
 
+You write your eBPF program in a subset of C. Clang (the LLVM front-end) takes that C code and turns it into LLVM Intermediate Representation (IR). This is a platform-independent version of your code.
 
+### 2. The Optimizer
 
-### 2. The Optimized
+LLVM analyzes the IR to make it as efficient as possible. Since eBPF programs run inside the kernel, they need to be extremely fast and lightweight. LLVM strips out dead code and optimizes logic to ensure the program hits performance benchmarks.
 
 ### 3. The Back-End (eBPF Target)
 
+This is the "special sauce." LLVM includes a specific eBPF back-end. It takes the optimized IR and translates it into eBPF Bytecode.
+
 ### Using Rust instead of C
 
+Writing eBPF in Rust is becoming increasingly popular because it brings Rust's "if it compiles, it's safe" philosophy to the notoriously unforgiving environment of the Linux kernel.  
 
+When you use Rust, you aren't using clang. Instead, you use the Rust compiler (rustc), which also uses LLVM as its backend.  
 
-# Use Cases
+If you go the Rust route, you’ll likely use one of these two main ecosystems:  
+
+#### 1. Aya
+
+Aya is a "pure Rust" eBPF library. 
+Unlike other tools, it does not depend on libbpf (a C library).
+
+Pros: 
+- You only need the Rust toolchain to build.
+- You can share code easily between your "user-space" program and your "kernel-space" eBPF program.
+
+#### 2. Libbpf-rs
+
+This is a Rust wrapper around the official libbpf C library.
+
+Pro: It is maintained alongside the Linux kernel, ensuring it always supports the latest kernel features.
+
+Con: Requires a C compiler and libbpf headers on your system to build.  
+
+### The "Verifier" remains the Boss
+
+It is important to remember that Rust does not bypass the Kernel Verifier. 
+
+Even if your Rust code is perfectly valid, the Verifier might still reject it if it thinks the program is too complex, could loop forever, or tries to access out-of-bounds memory. 
+
+However, because Rust is so strict about memory safety, you will generally spend much less time fighting "invalid memory access" errors in the verifier than you would with C.
+
+# Common eBPF Use Cases
 
 ## Use Case #1
 
