@@ -134,9 +134,13 @@ However, tools like `libbpf-bootstrap` and the Go eBPF library help simplify thi
 
 ## Tools for eBPF development 
 
+The following tools help reduce the complexity of developing eBPF programs, making the process more accessible to developers aiming to optimize system performance, security, and observability.
+
 ### BCC
 
 A Python-based toolchain that simplifies writing, compiling, and loading eBPF programs. 
+
+It offers many pre-built tracing tools but has limitations with dependencies and compatibility.
 
 In the world of Linux observability, BCC (BPF Compiler Collection) was the pioneer that made eBPF accessible.  
 
@@ -144,9 +148,19 @@ While it’s incredibly powerful, it’s also notoriously "heavy".
 
 Its limitations stem from one core design choice: BCC compiles your eBPF program at runtime, on the target machine.  
 
+To run a BCC script, the target machine isn't just running a small program; it’s hosting an entire development environment.  
 
+BCC requires the LLVM and Clang compilers to be installed on every production server where you want to run a script. These are massive dependencies (often hundreds of megabytes).
 
-### 
+And because BCC compiles the code on the fly, it needs the Linux kernel headers (linux-headers-$(uname -r)) to match the exact version of the running kernel. If the headers are missing or mismatched, the script simply fails to start.
+
+### eBPF Go Library (Cilium?)
+
+A Go library that decouples the process of obtaining eBPF bytecode from the loading and management of eBPF programs.  
+
+### libbpf-bootstrap
+
+A modern scaffold based on `libbpf` that provides an efficient workflow for writing eBPF programs, offering a simple one-time compilation process for reusable bytecode.
 
 # Common eBPF Use Cases
 
