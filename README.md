@@ -140,8 +140,6 @@ The following tools help reduce the complexity of developing eBPF programs, maki
 
 A Python-based toolchain that simplifies writing, compiling, and loading eBPF programs. 
 
-It offers many pre-built tracing tools but has limitations with dependencies and compatibility.
-
 In the world of Linux observability, BCC (BPF Compiler Collection) was the pioneer that made eBPF accessible.  
 
 While it’s incredibly powerful, it’s also notoriously "heavy". 
@@ -161,6 +159,10 @@ A Go library that decouples the process of obtaining eBPF bytecode from the load
 ### libbpf-bootstrap
 
 A modern scaffold based on `libbpf` that provides an efficient workflow for writing eBPF programs, offering a simple one-time compilation process for reusable bytecode.
+
+### eunomia-bpf
+
+A toolchain for writing eBPF programs with only kernel space code. It simplifies the development of eBPF programs by dynamically loading them.
 
 # Common eBPF Use Cases
 
