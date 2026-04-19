@@ -122,6 +122,20 @@ Even if your Rust code is perfectly valid, the Verifier might still reject it if
 
 However, because Rust is so strict about memory safety, you will generally spend much less time fighting "invalid memory access" errors in the verifier than you would with C.
 
+# How to use eBPF programming?
+
+A typical eBPF program involves 2 parts:
+- kernel space code (*_kern.c)
+- user space code (*_user.c)
+
+The kernel space code defines the logic, while the user space code manages loading and interacting with the kernel.  
+
+However, tools like libbpf-bootstrap and the Go eBPF library help simplify this process, allowing for one-time compilation and easier development.
+
+## Tools for eBPF development 
+
+
+
 # Common eBPF Use Cases
 
 ## Use Case #1
