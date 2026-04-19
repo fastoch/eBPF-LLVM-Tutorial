@@ -44,7 +44,48 @@ It gives you deep, low‑overhead visibility into networking, syscalls, and syst
 
 As a DevOps engineer, you don’t necessarily need to write raw eBPF C programs, but understanding how eBPF‑powered tools work (Cilium, Falco, etc.) is becoming a real differentiator in production‑grade Kubernetes and Linux‑centric environments.
 
-# 0. Introduction to core concepts and tools
+# 0. Introduction to Core Concepts and Tools
+
+## What is LLVM?
+
+In the world of eBPF, LLVM (Low-Level Virtual Machine) is essentially the factory where your high-level code is transformed into something the Linux kernel can understand and execute.  
+
+If you're writing eBPF programs, you aren't writing raw bytecode (which looks like hex or assembly); you’re likely writing in C or Rust. LLVM is the toolchain that bridges that gap.  
+
+## Why do we need LLVM?
+
+Before LLVM added support for the eBPF "target" (around 2015), writing eBPF was incredibly difficult.  
+
+Without LLVM, eBPF would likely still be a niche tool used only by kernel networking experts. LLVM made it accessible to general systems engineers and SREs.
+
+Here is why LLVM changed the game:  
+
+### Standard Tooling 
+
+LLVM allowed developers to use familiar languages like C or Rust instead of manual bytecode.
+
+### BTF (BPF Type Format):
+
+LLVM helps generate debug information that allows eBPF programs to be "portable" across different kernel versions (Compile Once – Run Everywhere).  
+
+### Verification Prep
+
+The LLVM compiler is aware of the kernel's strict "Verifier" rules. It tries to generate code that won't be rejected by the kernel for being unsafe (e.g., preventing infinite loops).
+
+## The role of LLVM in the eBPF pipeline 
+
+LLVM isn't just a single compiler; it’s a collection of modular compiler technologies. 
+In the eBPF workflow, it performs three critical roles:
+
+### 1. The Front-End (Clang)
+
+
+
+### 2. The Optimized
+
+### 3. The Back-End (eBPF Target)
+
+### Using Rust instead of C
 
 
 
