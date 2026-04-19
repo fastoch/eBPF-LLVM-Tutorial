@@ -130,11 +130,17 @@ A typical eBPF program involves 2 parts:
 
 The kernel space code defines the logic, while the user space code manages loading and interacting with the kernel.  
 
-However, tools like libbpf-bootstrap and the Go eBPF library help simplify this process, allowing for one-time compilation and easier development.
+However, tools like `libbpf-bootstrap` and the Go eBPF library help simplify this process, allowing for one-time compilation and easier development.
 
 ## Tools for eBPF development 
 
+### BCC
 
+A Python-based toolchain that simplifies writing, compiling, and loading eBPF programs. 
+
+It offers many pre-built tracing tools but has limitations with dependencies and compatibility.  
+
+### 
 
 # Common eBPF Use Cases
 
