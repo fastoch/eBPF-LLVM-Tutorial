@@ -138,7 +138,13 @@ However, tools like `libbpf-bootstrap` and the Go eBPF library help simplify thi
 
 A Python-based toolchain that simplifies writing, compiling, and loading eBPF programs. 
 
-It offers many pre-built tracing tools but has limitations with dependencies and compatibility.  
+In the world of Linux observability, BCC (BPF Compiler Collection) was the pioneer that made eBPF accessible.  
+
+While it’s incredibly powerful, it’s also notoriously "heavy". 
+
+Its limitations stem from one core design choice: BCC compiles your eBPF program at runtime, on the target machine.  
+
+
 
 ### 
 
