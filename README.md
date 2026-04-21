@@ -1,17 +1,14 @@
 # Resources
 
-- https://eunomia.dev/tutorials/
-- complete source code of the tutorial:
-https://github.com/eunomia-bpf/bpf-developer-tutorial
+- https://cilium.isovalent.com/hubfs/Ebook%20What%20is%20eBPF%20OReilly%20report.pdf
 
 # Introduction 
 
 This is a development tutorial for eBPF based on CO-RE (Compile Once, Run Everywhere). 
 
-It provides practical eBPF implementation examples from beginner to advanced, and real-world applications.  
+It provides practical eBPF implementation examples from beginner to advanced.
 
-Rather than focusing on traditional tools like BCC, we'll use modern frameworks like libbpf, Cilium, libbpf-rs, and eunomia-bpf for development, with examples in languages such as C, Go, and Rust.  
-
+Rather than focusing on traditional tools like BCC, we'll use modern frameworks like libbpf, Cilium, and libbpf-rs for development, with examples in languages such as C, Go, and Rust.  
 >[!note]
 >BCC (BPF Compiler Collection) is a set of tools leveraging eBPF for kernel tracing.
 
@@ -24,6 +21,13 @@ eBPF programs are triggered by events such as system calls, network packets, or 
 They can inspect, filter, or even modify kernel behavior (for example, changing how packets are routed, or logging which system calls a process makes).  
 
 In short, eBPF is a way to safely extend the Linux kernel at runtime for networking, observability, and security, mainly in the cloud‑native ecosystem.
+
+>[!note]
+>eBPF was added to the Linux kernel in 2014.
+
+>[!note]
+>Since modern Linux kernels all have support
+for the “extended” parts, the terms eBPF and BPF are largely used interchangeably these days
 
 ## Safety and performance
 
@@ -152,7 +156,7 @@ BCC requires the LLVM and Clang compilers to be installed on every production se
 
 And because BCC compiles the code on the fly, it needs the Linux kernel headers (linux-headers-$(uname -r)) to match the exact version of the running kernel. If the headers are missing or mismatched, the script simply fails to start.
 
-### eBPF Go Library (Cilium?)
+### Cilium/eBPF Go Library
 
 A Go library that decouples the process of obtaining eBPF bytecode from the loading and management of eBPF programs.  
 
@@ -163,6 +167,10 @@ A modern scaffold based on `libbpf` that provides an efficient workflow for writ
 ### eunomia-bpf
 
 A toolchain for writing eBPF programs with only kernel space code. It simplifies the development of eBPF programs by dynamically loading them.
+
+## Writing BPF programs 
+
+
 
 # Common eBPF Use Cases
 
